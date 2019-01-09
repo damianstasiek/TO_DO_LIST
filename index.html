@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Life goals</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="header">
+        </div>
+        <div class="title">
+            <h1 class="title--big">Life goals</h1>
+            <p class="title--small">Life goals to do: <span class="number">0</span></p>
+        </div>
+        <div class="form">
+            <input type="text" class="name" placeholder="Your goal">
+            <input type="date" name="endDate" id="" class="endDate">
+            <select name="type_of_goals" class="type" id="">
+                <option value="" selected disabled hidden>Type of goals</option>
+                <option value="fitness">fitness</option>
+                <option value="financial">financial</option>
+                <option value="knowledge">knowledge/writting</option>
+                <option value="business">business/career</option>
+                <option value="social">social/family</option>
+                <option value="travel">travel</option>
+            </select>
+
+            <button type="submit" class="add__btn">Add</button>
+        </div>
+        <div class="container">
+            <div class="todo">
+                <h2>Goals to do</h2>
+                <button class="sort">Sort</button>
+                <ul class="todo_list"></ul>
+            </div>
+            <div class="completed">
+                <h2>Achieved goals</h2>
+                <ul class="complet_list">
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    font-family: 'Open Sans';
+}
+
+
+.form {
+    text-align: center;
+}
+
+.header {
+    background: url(img/yourfuture.jpg) no-repeat center;
+    background-size: cover;
+    height: 70vh;
+    text-align: center;
+}
+
+.title {
+    text-align: center;
+    padding: 20px;
+}
+
+.title--big {
+    font-size: 60px;
+}
+
+.title--small {
+    font-size: 25px;
+}
+
+
+/* ----Form----*/
+input,
+select {
+    border: 1px solid #e7e7e7;
+    background-color: #fff;
+    color: inherit;
+    font-family: inherit;
+    font-size: 18px;
+    padding: 12px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    transition: border 0.3s;
+
+}
+
+.add__btn {
+    border: 1px solid #e7e7e7;
+    background-color: #20c000;
+    padding: 12px 25px;
+    margin-right: 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+/* ----Items----*/
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.todo,
+.completed {
+    display: flex;
+    flex-direction: column;
+    background-color: #fffffe;
+    width: 33%;
+    margin: 80px;
+}
+
+.sort {
+    width: 50px;
+}
+
+
+.items__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    font-size: 24px;
+    text-transform: uppercase;
+    border-bottom: 2px solid;
+}
+
+.itemList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 8px 0;
+    border-bottom: 1px solid black;
+}
+
+.itemList>* {
+    padding: 8px;
+}
