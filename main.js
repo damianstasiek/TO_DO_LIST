@@ -106,7 +106,7 @@ class UIController {
         const itemElement = document.createElement('li');
         const todoList = document.querySelector(UIController.DOMstrings().todoList);
         const completedList = document.querySelector(UIController.DOMstrings().completedList);
-        const sort = document.querySelector('.sort');
+        const sort = document.querySelector('.sortName');
         console.log(items);
         items.forEach((item) => {
             itemElement.classList.add('itemList');
@@ -138,15 +138,20 @@ class UIController {
         let switchcount = 0
         let i;
         let dir = 'asc';
+        let sortBy;
         console.log(el);
         while (switching) {
             const li = document.querySelectorAll('.itemList')
-            console.log(li);
-            console.log('work');
             switching = false;
+            console.log(li[0].childNodes.forEach(child => {
+                console.log(child.className);
+            }));
             for (i = 0; i < li.length - 1; i++) {
                 shouldSwitch = false;
                 if (dir == 'asc') {
+                    sortBy = li[i].childNodes.forEach(child => {
+                        return child.className
+                    })
                     if (li[i].innerHTML.toLowerCase() > li[i + 1].innerHTML.toLowerCase()) {
                         shouldSwitch = true;
                         break;
@@ -160,7 +165,7 @@ class UIController {
             }
             console.log(i);
             console.log(li[i]);
-            if (shouldSwitch) {
+            if (shouldSwitch && li.length > 1) {
                 li[i].parentNode.insertBefore(li[i + 1], li[i]);
                 switching = true;
                 switchcount++;
@@ -182,7 +187,7 @@ class Controller {
         const DOM = UIController.DOMstrings();
         document.querySelector(DOM.addBtn).addEventListener('click', this.ctrlAddItem.bind(this));
         document.querySelector('.container').addEventListener('click', this.ctrlDeleteItem.bind(this));
-        document.querySelector('.sort').addEventListener('click', this.sortList);
+        document.querySelector('.sortName').addEventListener('click', this.sortList);
     }
     ctrlAddItem() {
         const input = UIController.getInput();
@@ -216,11 +221,41 @@ class Controller {
             console.log(this.goals.showCompletedGoals());
         }
     }
-    sortList() {
+    sortList(e) {
         const list = document.querySelector('.todo_list');
-        UIController.sortList(list);
+        const btnSort = e.target.dataset.key;
+        UIController.sortList(list, btnSort);
+
     }
 
 }
 
 const init = new Controller();
+
+
+// Slider
+
+const slideImg = ['img/motivational-wallpaper-3.jpg', 'img/motivational-wallpaper-29.jpg', 'img/motivational-wallpaper-35.jpg']
+const image = document.querySelector('.slide');
+const time = 3000;
+let active = 0;
+
+const changeSlide = (key) => {
+    if (key === 39) active++;
+    else if (key === 37) active--;
+    else active++;
+    if (active === slideImg.length) active = 0;
+
+    if (active < 0) active = slideImg.length - 1;
+    image.src = slideImg[active];
+}
+let timer = setInterval(changeSlide, time);
+
+const keyChangeSlide = (e) => {
+    if (e.keyCode === 37 || e.keyCode === 39) {
+        changeSlide(e.keyCode);
+        clearInterval(timer);
+    }
+    timer = setInterval(changeSlide, time);
+}
+window.addEventListener('keydown', keyChangeSlide);
