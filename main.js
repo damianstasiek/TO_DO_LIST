@@ -114,7 +114,7 @@ class UIController {
             itemElement.innerHTML = `<p class="itemName">${item.name}</p><p class="itemCategory">${item.category}</p><p class="itemDate">${item.endDate}</p><p class="itemCalcDate">${item.calcDate}</p><button class="delete__btn">Delete</button><button class="completed__btn">${parent == 'completed' ? 'Complete' : 'Uncomplete'}</button>`;
             itemElement.dataset.key = item.ID;
             console.log(parent);
-            parent == 'todo' ? completedList.appendChild(itemElement) : todoList.appendChild(itemElement);
+            parent == 'todo_list' ? completedList.appendChild(itemElement) : todoList.appendChild(itemElement);
         })
     }
     static deleteListItme(item) {
@@ -138,7 +138,6 @@ class UIController {
         let switchcount = 0
         let i;
         let dir = 'asc';
-        let sortBy;
         console.log(el);
         while (switching) {
             const li = document.querySelectorAll('.itemList')
@@ -212,6 +211,7 @@ class Controller {
             UIController.deleteListItme(itemEl);
             UIController.updateNumOfGoals(this.goals.numberOfGoals());
         } else if (e.target.className === 'completed__btn') {
+            console.log(parent);
             this.goals.completeItem(itemID, parent);
             UIController.deleteListItme(itemEl);
             UIController.updateNumOfGoals(this.goals.numberOfGoals());
@@ -235,48 +235,48 @@ const init = new Controller();
 
 // Slider
 
-const slideImg = ['img/motivational-wallpaper-3.jpg', 'img/motivational-wallpaper-29.jpg', 'img/motivational-wallpaper-35.jpg']
-const image = document.querySelector('.slide');
-const dots = document.querySelector('.dots');
-const time = 4000;
-let active = 0;
+// const slideImg = ['img/motivational-wallpaper-3.jpg', 'img/motivational-wallpaper-29.jpg', 'img/motivational-wallpaper-35.jpg']
+// const image = document.querySelector('.slide');
+// const dots = document.querySelector('.dots');
+// const time = 4000;
+// let active = 0;
 
-const createDots = () => {
-    for (let i = 0; i < slideImg.length; i++) {
-        const dot = document.createElement('span');
-        dot.classList.add('dot');
-        dot.id = i;
-        dots.appendChild(dot);
-    }
-}
+// const createDots = () => {
+//     for (let i = 0; i < slideImg.length - 1; i++) {
+//         const dot = document.createElement('span');
+//         dot.classList.add('dot');
+//         dot.id = i;
+//         dots.appendChild(dot);
+//     }
+// }
 
-const activeDots = (index) => {
-    const dots = [...document.querySelectorAll('.dot')];
-    dots[index].classList.add('active');
-    index - 1 < 0 ? index = slideImg.length : index;
-    dots[index - 1].classList.remove('active')
-}
+// const activeDots = (index) => {
+//     const dots = [...document.querySelectorAll('.dot')];
+//     const activeDot = dots.findIndex(dot => dot.classList.contains('active'));
+//     dots[activeDot].classList.remove('active');
+//     dots[index].classList.add('active')
+// }
 
-const changeSlide = (key) => {
-    if (key === 39) active++;
-    else if (key === 37) active--;
-    else active++;
-    if (active === slideImg.length) active = 0;
+// const changeSlide = (key) => {
+//     if (key === 39) active++;
+//     else if (key === 37) active--;
+//     else active++;
+//     if (active === slideImg.length) active = 0;
 
-    if (active < 0) active = slideImg.length - 1;
-    image.src = slideImg[active];
-    activeDots(active)
-    console.log(active);
+//     if (active < 0) active = slideImg.length - 1;
+//     image.src = slideImg[active];
+//     activeDots(active)
+//     console.log(active);
 
-}
-let timer = setInterval(changeSlide, time);
+// }
+// let timer = setInterval(changeSlide, time);
 
-const keyChangeSlide = (e) => {
-    if (e.keyCode === 37 || e.keyCode === 39) {
-        changeSlide(e.keyCode);
-        clearInterval(timer);
-    }
-    timer = setInterval(changeSlide, time);
-}
-let dot = createDots();
-window.addEventListener('keydown', keyChangeSlide);
+// const keyChangeSlide = (e) => {
+//     if (e.keyCode === 37 || e.keyCode === 39) {
+//         changeSlide(e.keyCode);
+//         clearInterval(timer);
+//     }
+//     timer = setInterval(changeSlide, time);
+// }
+// createDots();
+// window.addEventListener('keydown', keyChangeSlide);
