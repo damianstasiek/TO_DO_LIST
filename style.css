@@ -117,7 +117,12 @@ select {
 }
 
 .sort {
+    display: none;
     width: 100px;
+}
+
+.sort.active {
+    display: block;
 }
 
 

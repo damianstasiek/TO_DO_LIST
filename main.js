@@ -119,6 +119,7 @@ class UIController {
     }
     static deleteListItme(item) {
         item.remove();
+
     }
     static updateNumOfGoals(goalsNum) {
         const number = document.querySelector('.number');
@@ -197,6 +198,7 @@ class Controller {
             UIController.addListItem(x);
             UIController.updateNumOfGoals(this.goals.numberOfGoals());
             UIController.clearFields();
+            clearInterval(timer);
         } else {
             alert('Brak danych');
         }
@@ -216,7 +218,7 @@ class Controller {
             UIController.deleteListItme(itemEl);
             UIController.updateNumOfGoals(this.goals.numberOfGoals());
             const completed = (parent === 'completed' ? this.goals.showToDoGoals() : this.goals.showCompletedGoals());
-            UIController.addListItem((completed.length > 1 ? todo : completed), parent);
+            UIController.addListItem(completed, parent);
             console.log(this.goals.showToDoGoals());
             console.log(this.goals.showCompletedGoals());
         }
@@ -225,7 +227,6 @@ class Controller {
         const list = document.querySelector('.todo_list');
         const btnSort = e.target.dataset.key;
         UIController.sortList(list, btnSort);
-
     }
 
 }
@@ -266,7 +267,6 @@ const changeSlide = (key) => {
     if (active < 0) active = slideImg.length - 1;
     image.src = slideImg[active];
     activeDots(active)
-    console.log(active);
 
 }
 let timer = setInterval(changeSlide, time);
