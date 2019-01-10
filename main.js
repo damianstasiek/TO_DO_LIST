@@ -237,8 +237,25 @@ const init = new Controller();
 
 const slideImg = ['img/motivational-wallpaper-3.jpg', 'img/motivational-wallpaper-29.jpg', 'img/motivational-wallpaper-35.jpg']
 const image = document.querySelector('.slide');
-const time = 3000;
+const dots = document.querySelector('.dots');
+const time = 4000;
 let active = 0;
+
+const createDots = () => {
+    for (let i = 0; i < slideImg.length; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        dot.id = i;
+        dots.appendChild(dot);
+    }
+}
+
+const activeDots = (index) => {
+    const dots = [...document.querySelectorAll('.dot')];
+    dots[index].classList.add('active');
+    index - 1 < 0 ? index = slideImg.length : index;
+    dots[index - 1].classList.remove('active')
+}
 
 const changeSlide = (key) => {
     if (key === 39) active++;
@@ -248,6 +265,9 @@ const changeSlide = (key) => {
 
     if (active < 0) active = slideImg.length - 1;
     image.src = slideImg[active];
+    activeDots(active)
+    console.log(active);
+
 }
 let timer = setInterval(changeSlide, time);
 
@@ -258,4 +278,5 @@ const keyChangeSlide = (e) => {
     }
     timer = setInterval(changeSlide, time);
 }
+let dot = createDots();
 window.addEventListener('keydown', keyChangeSlide);

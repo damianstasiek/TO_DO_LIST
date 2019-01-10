@@ -30,10 +30,27 @@
     transform: translate(-50%, -50%);
 }
 
-
-.slide {
-    /* list-style: none; */
+.dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%);
 }
+
+.dot {
+    display: inline-block;
+    background-color: #000;
+    margin: 0 20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px white;
+}
+
+.dot.active {
+    box-shadow: 0 0 0 5px white, 0 0 3px 10px red;
+}
+
 
 /* 
 .header {
