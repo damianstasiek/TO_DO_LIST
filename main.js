@@ -235,48 +235,48 @@ const init = new Controller();
 
 // Slider
 
-// const slideImg = ['img/motivational-wallpaper-3.jpg', 'img/motivational-wallpaper-29.jpg', 'img/motivational-wallpaper-35.jpg']
-// const image = document.querySelector('.slide');
-// const dots = document.querySelector('.dots');
-// const time = 4000;
-// let active = 0;
+const slideImg = ['img/motivational-wallpaper-3.jpg', 'img/motivational-wallpaper-29.jpg', 'img/motivational-wallpaper-35.jpg']
+const image = document.querySelector('.slide');
+const dots = document.querySelector('.dots');
+const time = 4000;
+let active = 0;
 
-// const createDots = () => {
-//     for (let i = 0; i < slideImg.length - 1; i++) {
-//         const dot = document.createElement('span');
-//         dot.classList.add('dot');
-//         dot.id = i;
-//         dots.appendChild(dot);
-//     }
-// }
+const createDots = () => {
+    for (let i = 0; i < slideImg.length - 1; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        dot.id = i;
+        dots.appendChild(dot);
+    }
+}
 
-// const activeDots = (index) => {
-//     const dots = [...document.querySelectorAll('.dot')];
-//     const activeDot = dots.findIndex(dot => dot.classList.contains('active'));
-//     dots[activeDot].classList.remove('active');
-//     dots[index].classList.add('active')
-// }
+const activeDots = (index) => {
+    const dots = [...document.querySelectorAll('.dot')];
+    const activeDot = dots.findIndex(dot => dot.classList.contains('active'));
+    dots[activeDot].classList.remove('active');
+    dots[index].classList.add('active')
+}
 
-// const changeSlide = (key) => {
-//     if (key === 39) active++;
-//     else if (key === 37) active--;
-//     else active++;
-//     if (active === slideImg.length) active = 0;
+const changeSlide = (key) => {
+    if (key === 39) active++;
+    else if (key === 37) active--;
+    else active++;
+    if (active === slideImg.length) active = 0;
 
-//     if (active < 0) active = slideImg.length - 1;
-//     image.src = slideImg[active];
-//     activeDots(active)
-//     console.log(active);
+    if (active < 0) active = slideImg.length - 1;
+    image.src = slideImg[active];
+    activeDots(active)
+    console.log(active);
 
-// }
-// let timer = setInterval(changeSlide, time);
+}
+let timer = setInterval(changeSlide, time);
 
-// const keyChangeSlide = (e) => {
-//     if (e.keyCode === 37 || e.keyCode === 39) {
-//         changeSlide(e.keyCode);
-//         clearInterval(timer);
-//     }
-//     timer = setInterval(changeSlide, time);
-// }
-// createDots();
-// window.addEventListener('keydown', keyChangeSlide);
+const keyChangeSlide = (e) => {
+    if (e.keyCode === 37 || e.keyCode === 39) {
+        changeSlide(e.keyCode);
+        clearInterval(timer);
+    }
+    timer = setInterval(changeSlide, time);
+}
+createDots();
+window.addEventListener('keydown', keyChangeSlide);
