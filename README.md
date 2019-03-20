@@ -1,2 +1,2 @@
-# TO-do-list in JavaScript
+# To-do-list
 Live: https://damianstasiek.github.io/To-do-list/
